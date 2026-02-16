@@ -146,96 +146,155 @@ body{
   background:linear-gradient(135deg,#c9a46c,#f1d6a3);
   color:#000;
   font-weight:600;
-  text-decoration:none;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elvona Store | Coming Soon</title>
 
-.email{
-  margin-top:14px;
-  font-size:12px;
-  color:#888;
-}
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
 
-footer{
-  margin-top:26px;
-  font-size:11px;
-  color:#aaa;
-}
-</style>
-</head>
-
-<body>
-
-<div class="card">
-
-  <div class="brand">Elvona Store</div>
-  <div class="sub">Beauty • Cosmetics • Personal Care</div>
-
-  <div class="badge">COMING SOON</div>
-
-  <div class="title">A New Beauty Experience ✨</div>
-
-  <div class="text">
-    Discover skincare, beauty, and personal care  
-    crafted for modern elegance.
-  </div>
-
-  <div class="products">
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=400">
-      <span>Luxury Skincare</span>
-    </div>
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400">
-      <span>Personal Care</span>
-    </div>
-  </div>
-
-  <div id="timer" class="timer">
-    <div class="box"><h2 id="d">150</h2><span>Days</span></div>
-    <div class="box"><h2 id="h">00</h2><span>Hours</span></div>
-    <div class="box"><h2 id="m">00</h2><span>Minutes</span></div>
-    <div class="box"><h2 id="s">00</h2><span>Seconds</span></div>
-  </div>
-
-  <div id="live">🚀 We’re Live!</div>
-
-  <a class="btn" href="https://wa.me/message/X4Z4QP4LIRQFN1" target="_blank">
-    Contact Us on WhatsApp
-  </a>
-
-  <div class="email">📧 elvonabusiness@gmail.com</div>
-
-  <footer>© 2026 Elvona Store</footer>
-
-</div>
-
-<script>
-const TOTAL_DAYS = 150;
-const KEY = "elvona_150_days";
-
-let end = localStorage.getItem(KEY);
-if(!end){
-  end = Date.now() + TOTAL_DAYS*24*60*60*1000;
-  localStorage.setItem(KEY,end);
-}
-end = Number(end);
-
-setInterval(()=>{
-  const now = Date.now();
-  const diff = end - now;
-
-  if(diff <= 0){
-    document.getElementById("timer").style.display="none";
-    document.getElementById("live").style.display="block";
-    return;
+<style>
+  :root {
+    --bg: #fefefe;
+    --primary: #5fa8a3;
+    --text-main: #222222;
+    --text-muted: #6b7280;
   }
 
-  d.innerText = Math.floor(diff / 86400000);
-  h.innerText = Math.floor(diff / 3600000) % 24;
-  m.innerText = Math.floor(diff / 60000) % 60;
-  s.innerText = Math.floor(diff / 1000) % 60;
-},1000);
-</script>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--bg);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 20px;
+  }
+
+  header h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  header p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+  }
+
+  /* Email Waitlist */
+  .email-container {
+    display: flex;
+    max-width: 400px;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 30px;
+  }
+
+  .email-container input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px 0 0 8px;
+    outline: none;
+    font-size: 0.95rem;
+  }
+
+  .email-container button {
+    padding: 12px 20px;
+    background-color: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  .email-container button:hover {
+    opacity: 0.9;
+  }
+
+  /* Contact */
+  .contact {
+    font-size: 0.95rem;
+    margin-top: 25px;
+  }
+
+  .contact a {
+    color: var(--primary);
+    text-decoration: none;
+    margin: 0 10px;
+  }
+
+  footer {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 50px;
+  }
+
+  /* Aura Effect (simple subtle animation) */
+  .hero {
+    position: relative;
+    margin-bottom: 50px;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(95,168,163,0.15) 0%, transparent 70%);
+    z-index: -1;
+    animation: pulse 6s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.7; }
+  }
+
+  @media(max-width:480px){
+    header h1 { font-size: 2.2rem; }
+    header p { font-size: 1rem; }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <header>
+    <h1>Elvona Store</h1>
+    <p>Beauty, Cosmetic & Personal Care | Coming Soon</p>
+  </header>
+</div>
+
+<div class="email-container">
+  <input type="email" placeholder="Enter your email to join our waitlist">
+  <button>Notify Me</button>
+</div>
+
+<div class="contact">
+  <a href="https://wa.me/message/X4Z4QP4LIRQFN1" target="_blank">WhatsApp</a> |
+  <a href="mailto:elvonabusiness@gmail.com">Email</a>
+</div>
+
+<footer>
+  © 2026 Elvona Store • All Rights Reserved
+</footer>
 
 </body>
 </html>
